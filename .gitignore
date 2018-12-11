@@ -1,0 +1,10 @@
+AccountOwnerServer/AccountOwnerServer/obj
+AccountOwnerServer/AccountOwnerServer/bin
+AccountOwnerServer/Contracts/obj
+AccountOwnerServer/Contracts/bin
+AccountOwnerServer/Entities/obj
+AccountOwnerServer/Entities/bin
+AccountOwnerServer/LoggerService/obj
+AccountOwnerServer/LoggerService/bin
+AccountOwnerServer/Repository/obj
+AccountOwnerServer/Repository/bin
