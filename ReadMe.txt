@@ -1,9 +1,14 @@
 This is a ASP.NET and Angular Web application for class. The purpose of the application is to add 'Owners' and 'Accounts'.
 
 Link to Website hosted with AAWS ElasticBeanstalk
-http://http://accountowner-dev.us-west-2.elasticbeanstalk.com/
+http://accountowner-dev.us-west-2.elasticbeanstalk.com/
 
-AWS RDS was giving me problems, so a localhost with the provided scripts may be sufficient to see what the application may do.
+UserName = guest
+Password = def@123
+
+AWS RDS was giving me problems (Service:AmazonCloudFormation, Message:Stack named 'awseb-e-iutdgcegfa-stack' aborted operation. Current state: 'UPDATE_ROLLBACK_IN_PROGRESS' Reason: null) Couldn't figure this out.
+
+So a localhost with the provided scripts may be sufficient to see what the application may do.
 Editing the appsetting.json -> connectionString to your localhost port 5000 will allow you to link up the localhost and application.
 - Script_1.sql (Sets up the tables)
 - Script_2.sql (Inputs fake data into the tables)
