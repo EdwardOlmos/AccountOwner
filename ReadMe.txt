@@ -19,8 +19,10 @@ Editing the appsetting.json -> connectionString to your localhost port 5000 will
 - SPA, there are GET and POST APIs.
 - Dependency Injection. A Logger was implemented in the application. That is the LoggerService. It logs certain actions on the application and logs them to the location provided in the nlog.config file. 
 - Authentication using JWT
+- Authorization 
 --------------------------------------------------------------------------------------
 Some Structures
 The backend utilizes Interfaces and Wrappers (Respostiory Wrapper) to maintain clean code.
 The frontend utilizes a Shared folder to maintain directives, services, and modals. Also, for the Owner and Account pages, there are folders that combines their appropriate components. A custom directive was made for datepicker (used for date types).
 
+There is a 401 code when a user requests details of an owner (once data is present is on the Owner Actions page) They will be directed to the page but the information will be missing. 

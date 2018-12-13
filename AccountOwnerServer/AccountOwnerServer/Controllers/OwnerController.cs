@@ -6,6 +6,7 @@ using Contracts;
 using Entities.Models;
 using Entities.Extensions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AccountOwnerServer.Controllers
 {
@@ -66,7 +67,7 @@ namespace AccountOwnerServer.Controllers
         }
 
         // GET api/owner/{id}/account
-        [HttpGet("{id}/account")]
+        [HttpGet("{id}/account"), Authorize(Roles = "Somedude")]
         public IActionResult GetOwnerWithDetails(Guid id)
         {
             try
