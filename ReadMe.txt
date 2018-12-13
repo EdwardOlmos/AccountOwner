@@ -19,7 +19,7 @@ Editing the appsetting.json -> connectionString to your localhost port 5000 will
 - SPA, there are GET and POST APIs.
 - Dependency Injection. A Logger was implemented in the application. That is the LoggerService. It logs certain actions on the application and logs them to the location provided in the nlog.config file. 
 - Authentication using JWT
-- Authorization 
+- Authorization (Works on localhost)
 --------------------------------------------------------------------------------------
 Some Structures
 The backend utilizes Interfaces and Wrappers (Respostiory Wrapper) to maintain clean code.
