@@ -1,0 +1,33 @@
+<div class="row"> 
+  <div class="col-md-offset-10 col-md-2">
+    <a [routerLink]="['/account/create']">Create account</a>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-12">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Account Id</th>
+            <th>Account Type</th>
+            <th>Date Created</th>
+            <th>Details</th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let account of accounts">
+            <td>{{account.id}}</td>
+            <td>{{account.accountType}}</td>
+            <td>{{account.dateCreated | date: 'dd/MM/yyyy'}}</td>
+            <td><button type="button" id="update" class="btn btn-success" (click)="redirectToUpdatePage(account.id)">Update</button></td>
+            <td><button type="button" id="delete" class="btn btn-danger" (click)="redirectToDeletePage(account.id)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

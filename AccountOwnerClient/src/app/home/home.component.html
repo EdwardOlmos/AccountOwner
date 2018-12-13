@@ -1,3 +1,16 @@
 <div class="col-md-12">
   <p class="homeText">{{homeText}}</p>
+
+  <br>
+  <div *ngIf="isUserAuthenticated()" style="color:blue;">
+  <h2>
+    YOU ARE LOGGED IN
+  </h2>
+</div>
+
+  <br>
+  <ul>
+    <li *ngIf="!isUserAuthenticated()"><a routerLink="/login">Login</a></li>
+    <li *ngIf="isUserAuthenticated()"><a class="logout" (click)="logOut()">Logout</a></li>
+  </ul>
 </div>

@@ -9,9 +9,10 @@ using Entities.Models;
 using Entities.Extensions;
 using Microsoft.AspNetCore.Authorization;
 
+
 namespace AccountOwnerServer.Controllers
 {
-    [Route("/api/account")]
+    [Route("api/account")]
     public class AccountController : Controller
     {
         private ILoggerManager _logger;
@@ -24,7 +25,7 @@ namespace AccountOwnerServer.Controllers
         }
 
         // GET: api/account
-        [HttpGet, Authorize]
+        [HttpGet]
         public IActionResult GetAllAccounts()
         {
             try
@@ -40,32 +41,39 @@ namespace AccountOwnerServer.Controllers
             }
         }
 
-        // POST api/owner
-        [HttpPost]
-        public IActionResult CreateAccount([FromBody]Account account)
-        {
-            try
-            {
-                if (account.IsObjectNull())
-                {
-                    _logger.LogError("Account object sent from client is null.");
-                    return BadRequest("Account object is null");
-                }
-                if (!ModelState.IsValid)
-                {
-                    _logger.LogError("Invalid account object sent from client.");
-                    return BadRequest("Invalid model object");
-                }
+        //// GET: api/account
+        //[HttpGet, Authorize]
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "John  Doe", "Jane Doe" };
+        //}
 
-                _repository.Account.CreateAccount(account);
-                return CreatedAtRoute("AccountById", new { id = account.Id }, account);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong inside CreateAccount action: {ex.Message}");
-                return StatusCode(500, "Internal server error");
-            }
-        }
+        //// POST api/owner
+        //[HttpPost]
+        //public IActionResult CreateAccount([FromBody]Account account)
+        //{
+        //    try
+        //    {
+        //        if (account.IsObjectNull())
+        //        {
+        //            _logger.LogError("Account object sent from client is null.");
+        //            return BadRequest("Account object is null");
+        //        }
+        //        if (!ModelState.IsValid)
+        //        {
+        //            _logger.LogError("Invalid account object sent from client.");
+        //            return BadRequest("Invalid model object");
+        //        }
+
+        //        _repository.Account.CreateAccount(account);
+        //        return CreatedAtRoute("AccountById", new { id = account.Id }, account);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.LogError($"Something went wrong inside CreateAccount action: {ex.Message}");
+        //        return StatusCode(500, "Internal server error");
+        //    }
+        //}
 
 
 

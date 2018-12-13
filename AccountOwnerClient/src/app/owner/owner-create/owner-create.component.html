@@ -16,7 +16,8 @@
       <div class="form-group">
         <label for="dateOfBirth" class="control-label col-md-2">Date of birth: </label>
         <div class="col-md-5">
-          <input type="text" formControlName="dateOfBirth" id="dateOfBirth" class="form-control" appDatepicker (change)="executeDatePicker($event)" readonly/>
+          <input type="text" formControlName="dateOfBirth" id="dateOfBirth" class="form-control" appDatepicker 
+          (ngModelchange)="executeDatePicker($event)" />
         </div>
         <div class="col-md-5">
           <em *ngIf="validateControl('dateOfBirth') && hasError('dateOfBirth', 'required')">Date of birth is required</em>

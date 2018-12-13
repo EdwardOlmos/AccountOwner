@@ -1,45 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { RepositoryService } from './../../shared/services/repository.service';
-import { Owner } from './../../_interfaces/owner.model';
+import { Account } from './../../_interfaces/account.model';
 import { ErrorHandlerService } from './../../shared/services/error-handler.service';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
-  selector: 'app-owner-list',
-  templateUrl: './owner-list.component.html',
-  styleUrls: ['./owner-list.component.css']
+  selector: 'app-account-list',
+  templateUrl: './account-list.component.html',
+  styleUrls: ['./account-list.component.css']
 })
-export class OwnerListComponent implements OnInit {
+export class AccountListComponent implements OnInit {
 
-  public owners: Owner[];
+  public accounts: Account[];
   public errorMessage = '';
-  ownersa: any;
+  accountsa: any;
 
-  constructor(private http: HttpClient, private repository: RepositoryService, private errorHandler: ErrorHandlerService,
-    private router: Router) { }
+  constructor(private repository: RepositoryService, private errorHandler: ErrorHandlerService,
+    private router: Router, private http: HttpClient) { }
 
   ngOnInit() {
     // tslint:disable-next-line:prefer-const
     let token = localStorage.getItem('jwt');
-    this.http.get('http://localhost:5000/api/owner', {
+    this.http.get('http://localhost:5000/api/account', {
       headers: new HttpHeaders({
         'Authorization': 'Bearer ' + token,
         'Content-Type': 'application/json'
       })
     }).subscribe(response => {
-      this.ownersa = response;
+      this.accountsa = response;
     }, err => {
       console.log(err);
     });
-    this.getAllOwners();
+    this.getAllAccounts();
   }
 
-  public getAllOwners() {
+  public getAllAccounts() {
     // tslint:disable-next-line:prefer-const
-    let apiAddress = 'api/owner';
+    let apiAddress = 'api/account';
     this.repository.getData(apiAddress).subscribe(res => {
-      this.owners = res as Owner[];
+      this.accounts = res as Account[];
     },
     (error) => {
       this.errorHandler.handleError(error);
@@ -47,22 +47,15 @@ export class OwnerListComponent implements OnInit {
     });
   }
 
-  public getOwnerDetails(id) {
-    // tslint:disable-next-line:prefer-const
-    let detailsUrl = `/owner/details/${id}`;
-    this.router.navigate([detailsUrl]);
-  }
-
   public redirectToUpdatePage(id) {
     // tslint:disable-next-line:prefer-const
-    let updateUrl = `/owner/update/${id}`;
+    let updateUrl = `/account/update/${id}`;
     this.router.navigate([updateUrl]);
   }
 
   public redirectToDeletePage(id) {
     // tslint:disable-next-line:prefer-const
-    let updateUrl = `/owner/delete/${id}`;
+    let updateUrl = `/account/delete/${id}`;
     this.router.navigate([updateUrl]);
   }
-
 }
